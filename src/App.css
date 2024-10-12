@@ -1,0 +1,37 @@
+.formStyle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.inputForm {
+    text-align: center;
+    border: 1px solid black;
+    font-family: 'Courier New', Courier, monospace;
+    outline: none;
+    padding: 0;
+    font-size: medium;
+    letter-spacing: 4px;
+    height: 50px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.inputForm:focus {
+    border: 1px solid blue;
+}
+
+.outputField {
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 50px;
+    width: 350px;
+    border: 1px solid black;
+    font-size: medium;
+    letter-spacing: 4px;
+}
