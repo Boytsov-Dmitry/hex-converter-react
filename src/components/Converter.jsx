@@ -5,7 +5,7 @@ const hex2rgb = (hex) => {
     const g = parseInt(hex.slice(3, 5), 16)
     const b = parseInt(hex.slice(5, 7), 16)
 
-    if(isNaN(r) && isNaN(g) && isNaN(b)) {
+    if(isNaN(r) || isNaN(g) || isNaN(b)) {
         return 'Error input!'
     } else {
         document.querySelector('body').style.background = `rgb(${r},${g},${b})`
