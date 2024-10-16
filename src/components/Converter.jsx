@@ -5,13 +5,21 @@ const hex2rgb = (hex) => {
     const g = parseInt(hex.slice(3, 5), 16)
     const b = parseInt(hex.slice(5, 7), 16)
 
-    if(isNaN(r) || isNaN(g) || isNaN(b)) {
+    if(!/^#[a-f0-9]{6}\b/i || isNaN(r) || isNaN(g) || isNaN(b)) {
         return 'Error input!'
     } else {
         document.querySelector('body').style.background = `rgb(${r},${g},${b})`
         document.querySelector('body').style.transition = `background 0.5s ease`
-        return [ `# ${r}, ${g}, ${b}` ]; 
+        return [ `rgb(${r}, ${g}, ${b})` ];
     }
+
+    // if(isNaN(r) || isNaN(g) || isNaN(b)) {
+    //     return 'Error input!'
+    // } else {
+    //     document.querySelector('body').style.background = `rgb(${r},${g},${b})`
+    //     document.querySelector('body').style.transition = `background 0.5s ease`
+    //     return [ `# ${r}, ${g}, ${b}` ]; 
+    // }
 };
 
 export default function Converter() {
