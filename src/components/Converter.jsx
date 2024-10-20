@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 
 const hex2rgb = (hex) => {
-    const r = parseInt(hex.slice(1, 3), 16)
-    const g = parseInt(hex.slice(3, 5), 16)
-    const b = parseInt(hex.slice(5, 7), 16)
-
-    if(!/^#[a-f0-9]{6}\b/i || isNaN(r) || isNaN(g) || isNaN(b)) {
-        return 'Error input!'
-    } else {
-        document.querySelector('body').style.background = `rgb(${r},${g},${b})`
-        document.querySelector('body').style.transition = `background 0.5s ease`
-        return [ `rgb(${r}, ${g}, ${b})` ];
-    }
-
-    // if(isNaN(r) || isNaN(g) || isNaN(b)) {
-    //     return 'Error input!'
-    // } else {
-    //     document.querySelector('body').style.background = `rgb(${r},${g},${b})`
-    //     document.querySelector('body').style.transition = `background 0.5s ease`
-    //     return [ `# ${r}, ${g}, ${b}` ]; 
-    // }
+    if (!/^#[0-9A-Fa-f]{6}$/g.test(hex)) {
+        return "Error input!";
+    };
+    
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    
+    return `rgb(${r},${g},${b})`;
 };
 
 export default function Converter() {
@@ -34,9 +25,11 @@ export default function Converter() {
     }
 
     return(
-        <form className='formStyle'>
-            <input className="inputForm" onInput={onChange} type='text' name='rgb' placeholder='Input HEX value...'/>
-            <div className="outputField">{result}</div>
-        </form>
+        <div style={{ backgroundColor: `${result}` }}>
+            <form className='formStyle'>
+                <input className="inputForm" onInput={onChange} type='text' name='rgb' placeholder='Input HEX value...'/>
+                <div className="outputField">{result}</div>
+            </form>
+        </div>
     )
 }
